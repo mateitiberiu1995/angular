@@ -1,0 +1,31 @@
+<html ng-app="xyz">
+<script src="angular.js"> </script>
+<script>
+var app=angular.module("xyz",[]);
+app.controller("ctrl1",function($scope){
+$scope.srch;
+$scope.records=[{regno:10,name: "peter",address:"something"},{regno:11,name: "peterpan",address:"manchester"},{regno:12,name: "petery",address:"London"}];
+});
+</script>
+<div ng-controller="ctrl1">
+<table>
+<tr>
+<td></td>
+<td><input type="text" ng-model="srch.name"></td>
+<td><input type="text" ng-model="srch.address"></td>
+</tr>
+<tr>
+<td>regno</td>
+<td>name</td>
+<td>address</td>
+
+</tr>
+<tr ng-repeat="x in records | filter:srch">
+<td>{{x.regno}}</td>
+<td>{{x.name}}</td>
+<td>{{x.address}}</td>
+
+</tr>
+</table>
+</div>
+</html>

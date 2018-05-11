@@ -1,0 +1,45 @@
+<html ng-app="xyz">
+<script src="angular.js"> </script>
+<script>
+var app=angular.module("xyz",[]);
+app.controller("ctrl1",function($scope){
+
+$scope.records=[{id: 21,product:"fanta",qty: 56, price: 1.4},{id: 50,product:"coke",qty: 45, price: 1.7},{id: 196,product:"pepsi",qty: 12, price: 1.0},{id: 10,product:"7up",qty: 120, price: 1.4}];
+$scope.field="product";
+$scope.order=true;
+$scope.change = function(cevaceva)
+{
+	console.log(cevaceva);
+	console.log(this.field);
+	if(this.field==cevaceva)
+	{
+	console.log(cevaceva);
+		this.order=!this.order;
+	}
+	else
+	{
+	this.field=cevaceva;
+	this.order=true;
+	}
+		
+};
+});
+</script>
+<div ng-controller="ctrl1">
+<table>
+<tr>
+<td ng-click="change('id')">id</td>
+<td ng-click="change('product')">product</td>
+<td ng-click="change('qty')">QTY</td>
+<td ng-click="change('price')">Price</td>
+</tr>
+<tr ng-repeat="x in records | orderBy : field : order">
+<td>{{x.id}}</td>
+<td>{{x.product}}</td>
+<td>{{x.qty}}</td>
+<td>{{x.price}}</td>
+
+</tr>
+</table>
+</div>
+</html>

@@ -1,0 +1,39 @@
+<html ng-app="xyz">
+<script src="angular.js"> </script>
+<script>
+var app=angular.module("xyz",[]);
+app.controller("ctrl1",function($scope){
+$scope.srch;
+$scope.records=[{regno:10,name: "peter",Gender:"m"},{regno:11,name: "peterpan",Gender:"f"},{regno:12,name: "petery",Gender:"o"}];
+});
+app.filter("Gender", function ()
+{
+	var showGender=function(x)
+	{
+	if(x=='m')
+		return "male";
+	if(x=='f')
+		return "female";
+	return "undefined gender";
+	};
+	return showGender;
+});
+</script>
+<div ng-controller="ctrl1">
+<table>
+
+<tr>
+<td>regno</td>
+<td>name</td>
+<td>gender</td>
+
+</tr>
+<tr ng-repeat="x in records ">
+<td>{{x.regno}}</td>
+<td>{{x.name}}</td>
+<td >{{x.Gender | Gender}}</td>
+
+</tr>
+</table>
+</div>
+</html>
